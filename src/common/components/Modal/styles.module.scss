@@ -1,0 +1,26 @@
+@use "../../styles/sass/base";
+
+.modal {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #00000060;
+
+  > div {
+    width: 550px;
+    padding: 32px;
+    background-color: base.$darkGraynishViolet;
+    border-radius: 8px;
+
+    h1 {
+      font-size: 1.4em;
+      margin-bottom: 32px;
+      color: base.$white;
+    }
+  }
+}

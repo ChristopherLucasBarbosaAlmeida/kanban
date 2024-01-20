@@ -1,0 +1,16 @@
+@use "../../../../common/styles/sass/base";
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+
+.select {
+  background-color: "transparent";
+  padding: "8px";
+  border-radius: "8px";
+  border: "2px solid rgb(55, 55, 67)";
+  font-size: "1.2em";
+}

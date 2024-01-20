@@ -1,0 +1,12 @@
+@use "../../styles/sass/base";
+
+.button {
+  border: none;
+  padding: 16px;
+  border-radius: 26px;
+  background-color: base.$violet;
+  color: base.$white;
+  font-weight: 600;
+  font-size: 1.1em;
+  cursor: pointer;
+}
