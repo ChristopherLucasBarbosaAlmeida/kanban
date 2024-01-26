@@ -6,7 +6,7 @@ interface Props {
   onClick?: () => void;
 }
 
-export default function Button(props: Props) {
+export  function Button(props: Props) {
   const { children, onClick } = props;
 
   return (

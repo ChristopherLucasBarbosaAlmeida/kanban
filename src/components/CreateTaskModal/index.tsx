@@ -1,6 +1,4 @@
-import Button from "../../../../common/components/Button";
-import Modal from "../../../../common/components/Modal";
-import TextField from "../../../../common/components/TextField";
+import { Button, Modal, TextField } from "..";
 import styles from "./styles.module.scss";
 import Select from "react-select";
 
@@ -10,7 +8,7 @@ const options = [
   { value: "done", label: "Done" },
 ];
 
-export default function CreateTaskModal({
+export function CreateTaskModal({
   show,
   onDismiss,
 }: {

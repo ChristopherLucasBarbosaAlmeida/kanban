@@ -1,6 +1,6 @@
 import styles from "./styles.module.scss";
 
-export default function Task({ title }: { title: string }) {
+export  function Task({ title }: { title: string }) {
   return (
     <div className={styles.task}>
       <h1>{title}</h1>

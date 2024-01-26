@@ -1,4 +1,4 @@
-import Task from "../Task";
+import { Task } from "..";
 import styles from "./styles.module.scss";
 
 interface BoardProps {
@@ -10,7 +10,7 @@ interface Task {
   title: string;
 }
 
-export default function Column({ name, tasks }: BoardProps) {
+export function Column({ name, tasks }: BoardProps) {
   return (
     <div className={styles.column}>
       <div className={styles.column__heading}>

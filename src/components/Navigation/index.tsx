@@ -1,6 +1,6 @@
 import styles from "./styles.module.scss";
 
-export default function Navigation() {
+export  function Navigation() {
   return (
     <nav className={styles.navigation}>
       <h1>Kanban</h1>

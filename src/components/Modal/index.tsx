@@ -1,13 +1,13 @@
-import React, { useRef } from "react";
+import { ReactNode, useRef } from "react";
 import styles from "./styles.module.scss";
 
 export interface Props {
-  children: React.ReactNode;
+  children: ReactNode;
   show: boolean;
   onDismiss: () => void;
 }
 
-export default function Modal(props: Props) {
+export  function Modal(props: Props) {
   const { children, show, onDismiss } = props;
 
   const backgroundRef = useRef(null);
