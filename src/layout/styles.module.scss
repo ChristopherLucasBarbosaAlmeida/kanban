@@ -1,0 +1,99 @@
+@import "../styles/colors";
+
+.container__main {
+  display: flex;
+  height: 100dvh;
+
+  nav {
+  width: 18%;
+  display: flex;
+  flex-direction: column;
+  background-color: $darkGraynishViolet;
+  border-right: 2px solid $darkGray;
+
+  h1 {
+    color: $white;
+    margin: 32px;
+    font-size: 2.2rem; 
+  }
+
+  > div {
+
+    span {
+      margin-left: 32px;
+      color: $gray;
+      font-weight: 600;
+    } 
+
+    ul {
+      margin-block: 16px;
+
+      li a {
+        display: block;
+        margin-right: 32px;
+        padding-block: 18px;  
+        padding-left: 32px;
+        color: $gray;
+        font-weight: 600;
+        cursor: pointer;
+      }
+    }
+
+    > a {
+      margin-left: 32px;
+      color: $violet;
+      font-weight: 600;
+      cursor: pointer;
+    }
+  }
+
+  footer {
+    padding: 32px;
+
+    > div {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      padding: 16px;
+      background-color: $darkViolet;
+      border-radius: 8px;
+      margin-bottom: 16px;
+    }
+
+    span {
+      color: $gray;
+      font-weight: 600;
+    }
+  }
+}
+
+  > div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: $darkViolet;
+
+    > header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 32px;
+      background-color: $darkGraynishViolet;
+      border-bottom: 2px solid $darkGray;
+
+      h1 {
+        color: $white;
+      }
+    }
+
+    > div {
+      flex: 1;
+      gap: 32px;
+      display: flex;
+      padding: 32px;
+      max-width: 1574px;
+      overflow: auto;
+    }
+  }
+}
+
