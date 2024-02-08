@@ -1,32 +1,16 @@
-import { ReactNode, useRef } from "react";
+import { ReactNode } from "react";
 import styles from "./styles.module.scss";
 
-export interface Props {
+type Props = {
   children: ReactNode;
-  show: boolean;
-  onDismiss: () => void;
-}
+};
 
-export  function Modal(props: Props) {
-  const { children, show, onDismiss } = props;
+export function Modal(props: Props) {
+  const { children } = props;
 
-  const backgroundRef = useRef(null);
-
-  function handleClick(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
-    if (e.target === backgroundRef.current) {
-      onDismiss();
-    }
-  }
-
-  if (show) {
-    return (
-      <div
-        className={styles.modal}
-        onMouseDown={handleClick}
-        ref={backgroundRef}
-      >
-        <div>{children}</div>
-      </div>
-    );
-  }
+  return (
+    <div className={styles.modal}>
+      <div>{children}</div>
+    </div>
+  );
 }
