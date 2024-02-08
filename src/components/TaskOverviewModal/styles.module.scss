@@ -1,0 +1,11 @@
+@import "../../styles/colors";
+
+.container__subtasks {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  > span {
+    color: $white;
+  }
+}
