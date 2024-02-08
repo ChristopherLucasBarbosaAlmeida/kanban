@@ -1,9 +1,8 @@
-@use "../../styles/base";
+@import "../../styles/colors";
 
 .column {
   width: 350px;
-  height: 100%;
-  border-radius: 8px;
+  height: max-content;
   display: flex;
   flex-direction: column;
   gap: 32px;
@@ -14,15 +13,14 @@
     align-items: center;
 
     div {
-      width: 18px;
-      height: 18px;
+      width: 14px;
+      height: 14px;
       border-radius: 50%;
-      background-color: base.$blue;
+      background-color: $blue;
     }
 
     span {
-      font-size: 1.2em;
-      color: base.$gray;
+      color: $gray;
     }
   }
 }

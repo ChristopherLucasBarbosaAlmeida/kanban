@@ -1,4 +1,4 @@
-@use "./styles/base";
+@import "./styles/colors";
 
 .container {
   display: flex;
@@ -8,18 +8,18 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    background-color: base.$darkViolet;
+    background-color: $darkViolet;
 
     > header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 32px;
-      background-color: base.$darkGraynishViolet;
-      border-bottom: 2px solid base.$darkGray;
+      background-color: $darkGraynishViolet;
+      border-bottom: 2px solid $darkGray;
 
       h1 {
-        color: base.$white;
+        color: $white;
       }
     }
 

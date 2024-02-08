@@ -1,12 +1,19 @@
-@use "../../styles/base";
+@import "../../styles/colors";
 
 .button {
   border: none;
-  padding: 16px;
+  padding: 8px;
   border-radius: 26px;
-  background-color: base.$violet;
-  color: base.$white;
   font-weight: 600;
-  font-size: 1.1em;
   cursor: pointer;
+}
+
+.button__primary {
+  background-color: $violet;
+  color: $white;
+}
+
+.button__secondary {
+  background-color: $white;
+  color: $violet;
 }

@@ -1,21 +1,22 @@
-@use "../../styles/base";
+@import "../../styles/colors";
 
 .task {
   min-width: 335px;
   height: max-content;
-  padding: 24px;
-  border-radius: 8px;
-  background-color: base.$darkGraynishViolet;
+  padding: 16px;
+  border-radius: 6px;
+  background-color: $darkGraynishViolet;
+  cursor: grab;
 
 
-  h1 {
-    color: base.$white;
-    font-size: 1.4em;
-    margin-bottom: 8px;
+  strong {
+    color: $white;
+    font-size: 1.2rem;
   }
 
   span {
-    font-size: 1.2em;
-    color: base.$gray;
+    display: block;
+    margin-top:8px;
+    color: $gray;
   }
 }

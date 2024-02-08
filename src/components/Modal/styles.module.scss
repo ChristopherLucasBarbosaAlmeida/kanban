@@ -1,26 +1,32 @@
-@use "../../styles/base";
+@import "../../styles/colors";
 
 .modal {
-  position: fixed;
   width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
+  height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #00000060;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #00000080;
 
   > div {
-    width: 550px;
+    width: 575px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
     padding: 32px;
-    background-color: base.$darkGraynishViolet;
     border-radius: 8px;
+    background-color: $darkGraynishViolet;
 
-    h1 {
-      font-size: 1.4em;
-      margin-bottom: 32px;
-      color: base.$white;
+    > strong {
+      font-size: 1.2rem;
+      color: $white;
+    }
+
+    > p {
+      color: $gray;
     }
   }
 }
