@@ -1,0 +1,41 @@
+@import "../../styles/colors";
+
+.subtask {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 6px;
+  background-color: $darkViolet;
+  color: $white;
+  cursor: pointer;
+  
+  input {
+    appearance: none;
+    min-width: 18px;
+    height: 18px;
+    background-color: $darkGray;
+    border: 1px solid $gray;
+    border-radius: 2px;
+    position: relative;
+    transition: background-color 250ms linear;
+    cursor: inherit;
+
+    &:checked {
+      background-color: $violet;
+      border: none;
+    }
+
+    &:checked::after {
+      content: "";
+      width: 4px;
+      height: 8px;
+      border: solid $white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(40deg);
+      position: absolute;
+      top: 2px;
+      left: 6px;
+    }
+  }
+}
