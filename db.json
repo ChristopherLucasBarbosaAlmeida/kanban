@@ -1,40 +1,52 @@
  [
   {
+    "id": "B1",
     "name": "TODO",
     "tasks": [
       {
+        "id": "A1",
         "title": "Build UI for onboard flow"
       },
       {
+        "id": "A2",
         "title": "Build UI for search"
       },
       {
+        "id": "A3",
         "title": "Build settings UI"
       },
       {
+        "id": "A4",
         "title": "QA and test all major user journeys"
       }
     ]
   },
   {
+    "id": "B2",
     "name": "DOING",
     "tasks": [
       {
+        "id": "A5",
         "title": "Design settings and search pages"
       },
       {
+        "id": "A6",
         "title": "Add account management endpoints"
       },
       {
+        "id": "A7",
         "title": "Design onboarding flow"
       },
       {
+        "id": "A8",
         "title": "Add search endpoint"
       },
       {
+        "id": "A9",
         "title": "Add authentication endpoints"
       },
       {
+        "id": "A10",
         "title":
           "Research pricing points of various competitors and trial diferent business models"
       }
