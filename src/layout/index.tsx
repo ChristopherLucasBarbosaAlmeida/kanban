@@ -4,10 +4,11 @@ import { Button } from "../components";
 
 type Prop = {
   children: ReactNode;
+  onClick: () => void;
 };
 
 export function Layout(props: Prop) {
-  const { children } = props;
+  const { children, onClick } = props;
 
   return (
     <main className={styles.container__main}>
@@ -30,7 +31,9 @@ export function Layout(props: Prop) {
       <div>
         <header>
           <h1>Platforma Launch</h1>
-          <Button variant="primary">+ Add New Task</Button>
+          <Button variant="primary" onClick={onClick}>
+            + Add New Task
+          </Button>
         </header>
         <div>{children}</div>
       </div>
