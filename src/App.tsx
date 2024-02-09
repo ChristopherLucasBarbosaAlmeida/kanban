@@ -1,8 +1,8 @@
 import { Column, CreateNewTaskModal } from "./components";
-import data from "../db.json";
 import { Layout } from "./layout";
 import { DndContext, closestCorners } from "@dnd-kit/core";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { KanbanContext } from "./context/Kanban";
 
 export function App() {
   const [showCreateNewTaskModal, setShowCreateNewTaskModal] = useState(false);
@@ -11,11 +11,13 @@ export function App() {
     setShowCreateNewTaskModal((prev) => !prev);
   }
 
+  const kanban = useContext(KanbanContext);
+
   return (
     <>
       <Layout onClick={handleShowCreateNewTaskModal}>
         <DndContext collisionDetection={closestCorners}>
-          {data.map((board) => (
+          {kanban.map((board) => (
             <Column {...board} key={board.id} />
           ))}
         </DndContext>
