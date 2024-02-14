@@ -19,6 +19,29 @@ export function Layout(props: Prop) {
 
   const [boardName, setBoardName] = useState("");
 
+  const [columnName, setConlumnName] = useState("");
+
+  function handleCreateNewColumn(boardId: string) {
+    const data = kanban.map((k) => {
+      if (k.id === boardId) {
+        return {
+          ...k,
+          columns: [
+            ...k.columns,
+            {
+              id: window.crypto.randomUUID(),
+              name: columnName,
+              tasks: [],
+            },
+          ],
+        };
+      }
+      return k;
+    });
+    setKanban(data);
+    setConlumnName("");
+  }
+
   function handleCreateNewBoard() {
     setKanban([
       ...kanban,
@@ -88,8 +111,13 @@ export function Layout(props: Prop) {
         }
       >
         <strong>Create a new column</strong>
-        <TextField label="Title" />
-        <Button variant="primary">Create</Button>
+        <TextField
+          label="Title"
+          onChange={(ev) => setConlumnName(ev.target.value)}
+        />
+        <Button variant="primary" onClick={() => handleCreateNewColumn("B1")}>
+          Create
+        </Button>
         <Button
           variant="secondary"
           onClick={() => setCreateNewColumnModal((prev) => !prev)}
