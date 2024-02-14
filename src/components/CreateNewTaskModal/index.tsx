@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import { Button, Modal, SelectField, TextField } from "..";
+import { KanbanContext } from "../../context/Kanban";
 
 type CreateNewTaskModalProps = {
   showCreateNewTaskModal: boolean;
@@ -7,6 +9,11 @@ type CreateNewTaskModalProps = {
 
 export function CreateNewTaskModal(props: CreateNewTaskModalProps) {
   const { showCreateNewTaskModal, handleClickModalBackground } = props;
+  const { kanban, setKanban } = useContext(KanbanContext);
+
+  function handleCreateNewTask() {
+    console.log(kanban);
+  }
 
   return (
     <Modal
@@ -19,7 +26,9 @@ export function CreateNewTaskModal(props: CreateNewTaskModalProps) {
       <TextField label="Subtasks" />
       <Button variant="secondary">Add New Subtask</Button>
       <SelectField label="Status" />
-      <Button variant="primary">Create Task</Button>
+      <Button variant="primary" onClick={handleCreateNewTask}>
+        Create Task
+      </Button>
     </Modal>
   );
 }

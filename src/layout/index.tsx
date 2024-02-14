@@ -1,6 +1,7 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, useContext, useState } from "react";
 import styles from "./styles.module.scss";
 import { Button, Modal, TextField } from "../components";
+import { KanbanContext } from "../context/Kanban";
 
 type Prop = {
   children: ReactNode;
@@ -13,17 +14,31 @@ export function Layout(props: Prop) {
   const [createNewBoard, setCreateNewBoard] = useState(false);
   const [showCreateNewColumnModal, setCreateNewColumnModal] = useState(false);
 
+  const { kanban, setKanban } = useContext(KanbanContext);
+  const totalBoards = kanban.length;
+
+  const [boardName, setBoardName] = useState("");
+
+  function handleCreateNewBoard() {
+    setKanban([
+      ...kanban,
+      { id: window.crypto.randomUUID(), name: boardName, columns: [] },
+    ]);
+
+    setBoardName("");
+  }
+
   return (
     <>
       <main className={styles.container__main}>
         <nav>
           <h1>Kanban</h1>
           <div>
-            <span>ALL BOARDS (8)</span>
+            <span>ALL BOARDS ({totalBoards})</span>
             <ul>
-              <li>
-                <a>Platform Lounch</a>
-              </li>
+              {kanban.map((k) => (
+                <li key={k.id}>{k.name}</li>
+              ))}
             </ul>
             {!createNewBoard ? (
               <a onClick={() => setCreateNewBoard((prev) => !prev)}>
@@ -31,10 +46,16 @@ export function Layout(props: Prop) {
               </a>
             ) : (
               <div>
-                <TextField label="Board title" />
+                <TextField
+                  label="Board title"
+                  onChange={(ev) => setBoardName(ev.target.value)}
+                />
                 <Button
                   variant="secondary"
-                  onClick={() => setCreateNewBoard((prev) => !prev)}
+                  onClick={() => {
+                    handleCreateNewBoard();
+                    setCreateNewBoard((prev) => !prev);
+                  }}
                 >
                   Add
                 </Button>

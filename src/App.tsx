@@ -11,15 +11,17 @@ export function App() {
     setShowCreateNewTaskModal((prev) => !prev);
   }
 
-  const kanban = useContext(KanbanContext);
+  const { kanban } = useContext(KanbanContext);
+
+  const columns = kanban.flatMap((c) => c.columns)
 
   return (
     <>
       <Layout onClick={handleShowCreateNewTaskModal}>
         <DndContext collisionDetection={closestCorners}>
-          {kanban.map((board) => (
-            <Column {...board} key={board.id} />
-          ))}
+          {columns.map((column) =>
+            <Column {...column} key={column.id} />
+          )}
         </DndContext>
       </Layout>
       <CreateNewTaskModal

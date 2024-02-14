@@ -8,7 +8,7 @@ type Props = {
 };
 
 export function Modal(props: Props) {
-  const { children, isShow = false, handleClickModalBackground } = props;
+  const { children, isShow = true, handleClickModalBackground } = props;
   const modalBackgroundRef = useRef<HTMLDivElement>(null);
 
   if (isShow) {

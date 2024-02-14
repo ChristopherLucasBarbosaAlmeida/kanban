@@ -9,12 +9,12 @@
   display: flex;
   flex-direction: column;
   background-color: $darkGraynishViolet;
-  border-right: 2px solid $darkGray;
+  border-right: 1px solid $darkGray;
 
   h1 {
     color: $white;
     margin: 32px;
-    font-size: 2.2rem; 
+    font-size: 1.4rem; 
   }
 
   > div {
@@ -22,27 +22,31 @@
     span {
       margin-left: 32px;
       color: $gray;
-      font-weight: 600;
     } 
 
     ul {
       margin-block: 16px;
 
-      li a {
+      li  {
         display: block;
         margin-right: 32px;
-        padding-block: 18px;  
+        padding-block: 16px;  
         padding-left: 32px;
         color: $gray;
-        font-weight: 600;
         cursor: pointer;
+
+        &:active {
+          background-color: $violet;
+          color: $white;
+          border-top-right-radius: 35px;
+          border-bottom-right-radius: 35px;
+        }
       }
     }
 
     > a {
       margin-left: 32px;
       color: $violet;
-      font-weight: 600;
       cursor: pointer;
     }
 
@@ -67,10 +71,11 @@
       align-items: center;
       padding: 32px;
       background-color: $darkGraynishViolet;
-      border-bottom: 2px solid $darkGray;
+      border-bottom: 1px solid $darkGray;
 
       h1 {
         color: $white;
+        font-size: 1.4rem;
       }
     }
 
@@ -79,11 +84,11 @@
       gap: 32px;
       display: flex;
       padding: 32px;
-      max-width: 1574px;
+      width: 1574px;
       overflow: auto;
      
       .column {
-        width: 350px;
+        min-width: 350px;
         border-radius: 6px;
         background-color: $darkGraynishViolet;
         display: flex;
@@ -94,7 +99,6 @@
         span {
           color: $gray;
           font-size: 1.4rem;
-          font-weight: 600;
         }
       }
     }

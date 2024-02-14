@@ -1,26 +1,26 @@
 @import "../../styles/colors";
 
 .column {
-  width: 350px;
+  min-width: 350px;
   height: max-content;
   display: flex;
   flex-direction: column;
-  gap: 32px;
-  
-  .column__heading {
-    display: flex;
-    gap: 16px;
-    align-items: center;
+  gap: 16px;
 
-    div {
-      width: 14px;
-      height: 14px;
+  > span {
+    color: $gray;
+    position: relative;
+    margin-left: 32px;
+
+    &::after {
+      content: "";
+      width: 12px;
+      height: 12px;
       border-radius: 50%;
       background-color: $blue;
-    }
-
-    span {
-      color: $gray;
+      position: absolute;
+      top: 2px;
+      left: -30px;
     }
   }
 }

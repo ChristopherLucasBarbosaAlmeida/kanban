@@ -18,10 +18,7 @@ export function Column(props: Props) {
 
   return (
     <div className={styles.column} ref={setNodeRef}>
-      <div className={styles.column__heading}>
-        <div></div>
-        <span>{name}</span>
-      </div>
+      <span>{name}</span>
       {tasks.map((task) => (
         <SortableContext items={tasks} strategy={verticalListSortingStrategy}>
           <Task {...task} key={task.id} />
