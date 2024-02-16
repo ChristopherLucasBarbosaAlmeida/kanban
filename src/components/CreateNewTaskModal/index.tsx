@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Button, Modal, SelectField, TextField } from "..";
 import { KanbanContext } from "../../context/Kanban";
 
@@ -11,8 +11,32 @@ export function CreateNewTaskModal(props: CreateNewTaskModalProps) {
   const { showCreateNewTaskModal, handleClickModalBackground } = props;
   const { kanban, setKanban } = useContext(KanbanContext);
 
+  const [title, setTitle] = useState("");
+
   function handleCreateNewTask() {
-    console.log(kanban);
+    const updated = kanban.map((k) => {
+      if (k.id === "B1") {
+        k.columns.map((column) => {
+          if (column.name === "Testing") {
+            return {
+              ...column,
+              tasks: [
+                ...column.tasks,
+                {
+                  id: window.crypto.randomUUID(),
+                  title,
+                  subtasks: [],
+                },
+              ],
+            };
+          }
+          return column;
+        });
+      }
+      return k;
+    });
+
+    setKanban(updated);
   }
 
   return (
@@ -21,11 +45,15 @@ export function CreateNewTaskModal(props: CreateNewTaskModalProps) {
       handleClickModalBackground={handleClickModalBackground}
     >
       <strong>Add New Task</strong>
-      <TextField label="Title" />
-      <TextField label="Description" isTextArea />
+      <TextField label="Title" onChange={(ev) => setTitle(ev.target.value)} />
+      <TextField
+        label="Description"
+        isTextArea
+        // onChange={(ev) => setDescription(ev.target.value)}
+      />
       <TextField label="Subtasks" />
       <Button variant="secondary">Add New Subtask</Button>
-      <SelectField label="Status" />
+      <SelectField label="Status" onChange={(ev) => console.log(ev?.option)} />
       <Button variant="primary" onClick={handleCreateNewTask}>
         Create Task
       </Button>
