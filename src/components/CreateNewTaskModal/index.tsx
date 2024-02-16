@@ -16,7 +16,7 @@ export function CreateNewTaskModal(props: CreateNewTaskModalProps) {
   function handleCreateNewTask() {
     const updated = kanban.map((k) => {
       if (k.id === "B1") {
-        k.columns.map((column) => {
+        k.columns = k.columns.map((column) => {
           if (column.name === "Testing") {
             return {
               ...column,
@@ -35,7 +35,6 @@ export function CreateNewTaskModal(props: CreateNewTaskModalProps) {
       }
       return k;
     });
-
     setKanban(updated);
   }
 
