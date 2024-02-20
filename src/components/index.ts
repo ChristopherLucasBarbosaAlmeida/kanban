@@ -7,3 +7,5 @@ export * from "./SelectField";
 export * from "./CreateNewTaskModal";
 export * from "./TaskOverviewModal";
 export * from "./Subtask";
+export * from "./Board";
+export * from "./CreateNewColumnModal";
