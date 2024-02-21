@@ -1,27 +1,30 @@
-import { UniqueIdentifier, useDroppable } from "@dnd-kit/core";
-import { Task } from "..";
 import styles from "./styles.module.scss";
 import {
   SortableContext,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
+import { Task as ITask } from "../../types/Task";
+import { Task } from "..";
+import { Column as IColumn } from "../../types/Column";
 
 interface Props {
-  id: UniqueIdentifier;
-  name: string;
-  tasks: { id: UniqueIdentifier; title: string }[];
+  data: IColumn;
+  handleClickTask: (task: ITask) => void;
 }
 
-export function Column(props: Props) {
-  const { id, name, tasks } = props;
-  const { setNodeRef } = useDroppable({ id });
+export function Column({ data, handleClickTask }: Props) {
+  const { name, tasks } = data;
 
   return (
-    <div className={styles.column} ref={setNodeRef}>
+    <div className={styles.column}>
       <span>{name}</span>
       {tasks.map((task) => (
         <SortableContext items={tasks} strategy={verticalListSortingStrategy}>
-          <Task {...task} key={task.id} />
+          <Task
+            data={task}
+            key={task.id}
+            handleClickTask={() => handleClickTask(task)}
+          />
         </SortableContext>
       ))}
     </div>
