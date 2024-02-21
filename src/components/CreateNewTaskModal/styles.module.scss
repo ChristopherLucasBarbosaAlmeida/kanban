@@ -1,0 +1,26 @@
+@import "../../styles/colors";
+
+.container__subtasks {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-height: 353px;
+  overflow: auto;
+
+  > div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    
+    > svg {
+      color: $gray;
+      cursor: pointer;
+    }
+  
+    label  {
+      width: 100%;
+    }
+  }
+}
+
