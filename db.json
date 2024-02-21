@@ -10,7 +10,23 @@
           {
             "id": "T1",
             "title": "Build UI for onboard flow",
-            "subtasks": []
+            "subtasks": [
+              {
+                "id": "ST1",
+                "done": false,
+                "description": "Testing"
+              },
+              {
+                "id": "ST1",
+                "done": true,
+                "description": "Testing"
+              },
+              {
+                "id": "ST1",
+                "done": true,
+                "description": "Testing"
+              }
+            ]
           },
           {
             "id": "T2",

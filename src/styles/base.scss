@@ -1,3 +1,5 @@
+@import "../styles/colors";
+
 * {
   margin: 0;
   padding: 0;
@@ -30,4 +32,14 @@ html,
   font-size: 1rem;
   -webkit-font-smoothing: antialiased;
   font-family: 'Josefin Sans', sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $violet;
+  border-radius: 25px;
 }

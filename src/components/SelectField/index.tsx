@@ -1,27 +1,21 @@
 import Select from "react-select";
 import styles from "./styles.module.scss";
-
-const options = [
-  {
-    value: "todo",
-    label: "Todo",
-  },
-  {
-    value: "doing",
-    label: "Doing",
-  },
-  {
-    value: "done",
-    label: "Done",
-  },
-];
+import { Column } from "../../types/Column";
 
 type Props = {
   label: string;
+  columns: Column[];
+  onChange: (ev: { value: string; label: string } | null) => void;
 };
 
 export function SelectField(props: Props) {
-  const { label } = props;
+  const { label, onChange, columns } = props;
+
+  const options: { value: string; label: string }[] = [];
+
+  columns.forEach((column) =>
+    options.push({ value: column.id, label: column.name })
+  );
 
   return (
     <label className={styles.select}>
@@ -69,7 +63,7 @@ export function SelectField(props: Props) {
             fontSize: "1rem",
           }),
         }}
-        onChange={(e) => console.log("change", e)}
+        onChange={onChange}
       />
     </label>
   );

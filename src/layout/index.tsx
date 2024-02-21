@@ -33,7 +33,12 @@ export function Layout() {
           <ul>
             {kanban.map((k) => (
               <li key={k.id}>
-                <NavLink to={`/${k.id}`}>{k.name}</NavLink>
+                <NavLink
+                  to={`/${k.id}`}
+                  className={({ isActive }) => (isActive ? "active" : "")}
+                >
+                  {k.name}
+                </NavLink>
               </li>
             ))}
           </ul>

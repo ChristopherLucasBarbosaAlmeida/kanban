@@ -27,20 +27,13 @@
     ul {
       margin-block: 16px;
 
-      li  {
+      li  a {
         display: block;
         margin-right: 32px;
         padding-block: 16px;  
         padding-left: 32px;
         color: $gray;
         cursor: pointer;
-
-        &:active {
-          background-color: $violet;
-          color: $white;
-          border-top-right-radius: 35px;
-          border-bottom-right-radius: 35px;
-        }
       }
     }
 
