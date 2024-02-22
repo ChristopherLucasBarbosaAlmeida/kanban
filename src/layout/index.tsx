@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import styles from "./styles.module.scss";
 import { Button, TextField } from "../components";
 import { KanbanContext } from "../context/Kanban";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 
 export function Layout() {
   const [createNewBoard, setCreateNewBoard] = useState(false);
@@ -12,16 +12,17 @@ export function Layout() {
 
   const [boardName, setBoardName] = useState("");
 
+  const navigate = useNavigate();
+
   function handleCreateNewBoard() {
     if (!boardName) {
       return;
     }
-    setKanban([
-      ...kanban,
-      { id: window.crypto.randomUUID(), name: boardName, columns: [] },
-    ]);
+    const boardId = window.crypto.randomUUID();
+    setKanban([...kanban, { id: boardId, name: boardName, columns: [] }]);
     setBoardName("");
-    setCreateNewBoard((prev) => !prev);
+    setCreateNewBoard(false);
+    navigate(`/${boardId}`);
   }
 
   return (
