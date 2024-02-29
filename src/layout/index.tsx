@@ -1,65 +1,77 @@
 import { useContext, useState } from "react";
 import styles from "./styles.module.scss";
 import { Button, TextField } from "../components";
-import { KanbanContext } from "../context/Kanban";
+import { BoardContext } from "../context/BoardContext";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { PanelsLeftBottom } from "lucide-react";
 
 export function Layout() {
   const [createNewBoard, setCreateNewBoard] = useState(false);
 
-  const { kanban, setKanban } = useContext(KanbanContext);
-  const totalBoards = kanban.length;
+  const { boards, dispatch } = useContext(BoardContext);
+  const totalBoards = boards.length;
 
-  const [boardName, setBoardName] = useState("");
+  const [name, setName] = useState("");
 
   const navigate = useNavigate();
 
   function handleCreateNewBoard() {
-    if (!boardName) {
+    if (!name) {
       return;
     }
-    const boardId = window.crypto.randomUUID();
-    setKanban([...kanban, { id: boardId, name: boardName, columns: [] }]);
-    setBoardName("");
+
+    const id = window.crypto.randomUUID();
+
+    const payload = {
+      id,
+      name,
+    };
+
+    dispatch({
+      type: "CREATE_BOARD",
+      payload,
+    });
+    setName("");
     setCreateNewBoard(false);
-    navigate(`/${boardId}`);
+    navigate(`/${id}`);
   }
 
   return (
     <main className={styles.container__main}>
-      <nav>
+      <aside>
         <h1>Kanban</h1>
-        <div>
-          <span>ALL BOARDS ({totalBoards})</span>
+        <span>ALL BOARDS ({totalBoards})</span>
+        <nav>
           <ul>
-            {kanban.map((k) => (
-              <li key={k.id}>
+            {boards.map((board) => (
+              <li key={board.id}>
                 <NavLink
-                  to={`/${k.id}`}
-                  className={({ isActive }) => (isActive ? "active" : "")}
+                  className={({ isActive }) => (isActive ? styles.active : "")}
+                  to={`/${board.id}`}
                 >
-                  {k.name}
+                  <PanelsLeftBottom />
+                  {board.name}
                 </NavLink>
               </li>
             ))}
           </ul>
           {!createNewBoard ? (
             <a onClick={() => setCreateNewBoard((prev) => !prev)}>
-              + Create New Board
+              <PanelsLeftBottom /> + Create New Board
             </a>
           ) : (
             <div>
               <TextField
                 label="Board title"
-                onChange={(ev) => setBoardName(ev.target.value)}
+                onChange={(ev) => setName(ev.target.value)}
               />
               <Button variant="secondary" onClick={handleCreateNewBoard}>
                 Add
               </Button>
             </div>
           )}
-        </div>
-      </nav>
+        </nav>
+      </aside>
       <Outlet />
     </main>
   );

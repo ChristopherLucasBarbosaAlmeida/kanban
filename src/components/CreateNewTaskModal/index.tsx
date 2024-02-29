@@ -1,11 +1,10 @@
 import { useContext, useState } from "react";
 import { Button, Modal, SelectField, TextField } from "..";
-import { KanbanContext } from "../../context/Kanban";
+import { BoardContext } from "../../context/BoardContext";
 import { X } from "lucide-react";
 import styles from "./styles.module.scss";
 import { Column } from "../../types/Column";
 import { Subtask } from "../../types/Subtask";
-import { Task } from "../../types/Task";
 
 type CreateNewTaskModalProps = {
   boardId: string;
@@ -21,7 +20,7 @@ export function CreateNewTaskModal(props: CreateNewTaskModalProps) {
     boardId,
     columns,
   } = props;
-  const { kanban, setKanban } = useContext(KanbanContext);
+  const { dispatch } = useContext(BoardContext);
   const [title, setTitle] = useState("");
   const [subtaskDescription, setSubtaskDescription] = useState("");
   const [subtasks, setSubtasks] = useState<Subtask[]>([]);
@@ -30,30 +29,19 @@ export function CreateNewTaskModal(props: CreateNewTaskModalProps) {
 
   function handleCreateNewTask() {
     if (!title) return;
-    const updated = kanban.map((k) => {
-      if (k.id === boardId) {
-        const newColumns = k.columns.map((column) => {
-          if (column.id === selectedColumnId) {
-            return {
-              ...column,
-              tasks: [
-                ...column.tasks,
-                {
-                  id: window.crypto.randomUUID(),
-                  title,
-                  description,
-                  subtasks,
-                } as Task,
-              ],
-            } as Column;
-          }
-          return column;
-        });
-        return { ...k, columns: newColumns };
-      }
-      return k;
+
+    const payload = {
+      title,
+      description,
+      subtasks,
+      boardId,
+      selectedColumnId,
+    };
+
+    dispatch({
+      type: "CREATE_TASK",
+      payload,
     });
-    setKanban(updated);
     setTitle("");
     setDescription("");
     setSubtasks([]);

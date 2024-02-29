@@ -26,6 +26,4 @@ export function Modal(props: Props) {
       </div>
     );
   }
-
-  return null;
 }

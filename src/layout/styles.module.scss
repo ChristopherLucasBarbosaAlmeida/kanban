@@ -4,7 +4,7 @@
   display: flex;
   height: 100dvh;
 
-  nav {
+  aside {
   width: 18%;
   display: flex;
   flex-direction: column;
@@ -17,27 +17,38 @@
     font-size: 1.4rem; 
   }
 
-  > div {
+  span {
+    margin-left: 32px;
+    color: $gray;
+  }
 
-    span {
-      margin-left: 32px;
-      color: $gray;
-    } 
-
+  nav {
     ul {
       margin-block: 16px;
 
-      li  a {
-        display: block;
+      li a {
+        display: flex;
+        align-items: center;
+        gap: 8px;
         margin-right: 32px;
         padding-block: 16px;  
         padding-left: 32px;
         color: $gray;
         cursor: pointer;
+
+        &.active {
+          background-color: $violet;
+          border-top-right-radius: 30px;
+          border-bottom-right-radius: 30px;
+          color: $white;
+        }
       }
     }
 
     > a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
       margin-left: 32px;
       color: $violet;
       cursor: pointer;

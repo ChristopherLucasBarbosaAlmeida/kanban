@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { Button, Modal, TextField } from "..";
-import { KanbanContext } from "../../context/Kanban";
+import { BoardContext } from "../../context/BoardContext";
 
 type Props = {
   boardId: string;
@@ -14,31 +14,24 @@ export function CreateNewColumnModal(props: Props) {
     handleOpenCreateNewColumnModal,
     boardId,
   } = props;
-  const [columnName, setConlumnName] = useState("");
-  const { kanban, setKanban } = useContext(KanbanContext);
+  const [name, setName] = useState("");
+  const { dispatch } = useContext(BoardContext);
 
   function handleCreateNewColumn(boardId: string) {
-    if (!columnName) {
+    if (!name) {
       return;
     }
-    const data = kanban.map((k) => {
-      if (k.id === boardId) {
-        return {
-          ...k,
-          columns: [
-            ...k.columns,
-            {
-              id: window.crypto.randomUUID(),
-              name: columnName,
-              tasks: [],
-            },
-          ],
-        };
-      }
-      return k;
+
+    const payload = {
+      boardId,
+      name,
+    };
+
+    dispatch({
+      type: "CREATE_COLUMN",
+      payload,
     });
-    setKanban(data);
-    setConlumnName("");
+    setName("");
   }
 
   return (
@@ -47,11 +40,7 @@ export function CreateNewColumnModal(props: Props) {
       handleClickModalBackground={handleOpenCreateNewColumnModal}
     >
       <strong>Create a new column</strong>
-      <TextField
-        label="Title"
-        onChange={(ev) => setConlumnName(ev.target.value)}
-      />
-      <input type="color" />
+      <TextField label="Title" onChange={(ev) => setName(ev.target.value)} />
       <Button
         variant="primary"
         onClick={() => {

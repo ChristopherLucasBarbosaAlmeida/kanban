@@ -7,17 +7,17 @@ import {
   TaskOverviewModal,
 } from "../../components";
 import { useContext, useState } from "react";
-import { KanbanContext } from "../../context/Kanban";
+import { BoardContext } from "../../context/BoardContext";
 import { useParams } from "react-router-dom";
 import styles from "./styles.module.scss";
 import { Task } from "../../types/Task";
 
 export function Board() {
-  const { kanban } = useContext(KanbanContext);
+  const { boards } = useContext(BoardContext);
 
   const { id } = useParams();
 
-  const board = kanban.find((k) => k.id === id);
+  const board = boards.find((board) => board.id === id);
   const columns = board?.columns ?? [];
 
   const [createNewTaskModalIsOpen, setCreateNewTaskModalIsOpen] =
